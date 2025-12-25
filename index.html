@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realum OS - Váš operačný systém pre reality</title>
+    <meta name="description"
+        content="Realum OS - Kompletná SaaS platforma pre realitných maklérov. Web Builder, CRM, Půdorysy, Email, Portál a viac.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            top: -100px;
+            right: -100px;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            top: 50%;
+            left: 10%;
+            opacity: 0.2;
+        }
+
+        .main-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .main-title span {
+            font-weight: 300;
+        }
+
+        .product {
+            position: absolute;
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.35);
+            transition: all 0.3s ease;
+            cursor: default;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .product:hover {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .product-web {
+            top: 25%;
+            left: 8%;
+        }
+
+        .product-crm {
+            top: 12%;
+            left: 70%;
+        }
+
+        .product-pudorysy {
+            top: 75%;
+            left: 5%;
+        }
+
+        .product-email {
+            top: 80%;
+            left: 75%;
+        }
+
+        .product-duit {
+            top: 40%;
+            right: 8%;
+        }
+
+        .product-portal {
+            top: 88%;
+            left: 45%;
+            transform: translateX(-50%);
+        }
+
+        .product-soft {
+            top: 8%;
+            left: 35%;
+        }
+
+        .product-active {
+            color: #ffffff !important;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .product-active:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .coming-soon {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                font-size: 0.85rem;
+            }
+
+            .product-active {
+                padding: 0.5rem 1rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .product-web {
+                top: 18%;
+                left: 5%;
+            }
+
+            .product-crm {
+                top: 10%;
+                right: 5%;
+                left: auto;
+            }
+
+            .product-pudorysy {
+                top: 70%;
+                left: 3%;
+            }
+
+            .product-email {
+                top: 75%;
+                right: 3%;
+                left: auto;
+            }
+
+            .product-duit {
+                top: 35%;
+                right: 3%;
+            }
+
+            .product-portal {
+                top: 85%;
+            }
+
+            .product-soft {
+                top: 5%;
+                left: 30%;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .product:nth-child(1) {
+            animation: float 7s ease-in-out infinite 0s;
+        }
+
+        .product:nth-child(2) {
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .product:nth-child(3) {
+            animation: float 6s ease-in-out infinite 0.5s;
+        }
+
+        .product:nth-child(4) {
+            animation: float 9s ease-in-out infinite 1.5s;
+        }
+
+        .product:nth-child(5) {
+            animation: float 7s ease-in-out infinite 2s;
+        }
+
+        .product:nth-child(6) {
+            animation: float 8s ease-in-out infinite 0.8s;
+        }
+
+        .product:nth-child(7) {
+            animation: float 6s ease-in-out infinite 1.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <h1 class="main-title">Realum <span>OS</span></h1>
+
+    <a href="https://realum.sk/auth/register" class="product product-active product-web">
+        Realum Web
+    </a>
+
+    <div class="product product-crm">
+        Realum CRM
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <div class="product product-pudorysy">
+        Realum Půdorysy
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <div class="product product-email">
+        Realum Email
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <div class="product product-duit">
+        Realum Duit
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <div class="product product-portal">
+        Realum Portál
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <div class="product product-soft">
+        Realum Soft
+        <span class="coming-soon">coming soon</span>
+    </div>
+
+    <footer class="footer">
+        <a href="mailto:info@realum.sk">info@realum.sk</a>
+    </footer>
+</body>
+
+</html>
